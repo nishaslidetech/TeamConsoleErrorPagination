@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import setupClass.BaseClass;
@@ -345,7 +346,7 @@ public class eBooks extends BaseClass {
 		Thread.sleep(5000);
 
 		// Delete Account
-		
+
 		WebElement Account = driver.findElement(
 				By.xpath("/html/body/div[1]/header/div/div/nav/div/div[2]/div[2]/div[2]/div/div[2]/ul/li[1]/a"));
 		Thread.sleep(3000);

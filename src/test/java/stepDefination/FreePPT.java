@@ -1,17 +1,13 @@
 package stepDefination;
 
-import java.io.PrintStream;
-import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import setupClass.BaseClass;
@@ -22,7 +18,6 @@ public class FreePPT extends BaseClass {
 	private WebElement free_ppt;
 
 	WebElement business_ppt;
-	
 
 	@Given("^user is already on Home page$")
 	public void user_is_already_on_Home_page() throws Throwable {
@@ -50,8 +45,8 @@ public class FreePPT extends BaseClass {
 	public void click_on_the_any_of_one_ppt_and_verify_the_console_error_for_free_user() throws Throwable {
 		try {
 			Thread.sleep(3000);
-			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='Circular Flow Of Process 4 Stages Free PowerPoint Templates Slides']")));
+			select_ppt = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[2]/div[1]/a[1]/img[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			select_ppt.click();
 			Thread.sleep(3000);
@@ -63,6 +58,35 @@ public class FreePPT extends BaseClass {
 
 	@Then("^check the pagination and check the console error$")
 	public void check_the_pagination_and_check_the_console_error() throws Throwable {
+		List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
+
+		System.out.println(sizeofPagination.size() + " = size");
+
+		if (sizeofPagination.size() > 0) {
+			System.out.println("pagination exists");
+
+			// click on pagination link
+			do
+				if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']")).isEmpty()) {
+
+					WebElement nextButton = driver
+							.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
+					nextButton.click();
+
+					Thread.sleep(3000);
+					// print console error
+					checkConsoleError();
+
+				} else
+
+				{
+					break;
+				}
+
+			while (true);
+		} else {
+			System.out.println("No pagination exists");
+		}
 
 	}
 
@@ -90,8 +114,8 @@ public class FreePPT extends BaseClass {
 	public void click_on_the_any_of_one_ppt_and_verify_the_console_error_for_business_ppts() throws Throwable {
 		try {
 			Thread.sleep(3000);
-			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='3d Puzzle Pieces In Line Powerpoint Presentation Slides']")));
+			select_ppt = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[3]/div[1]/a[1]/img[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			select_ppt.click();
 			Thread.sleep(3000);
