@@ -12,8 +12,8 @@ import setupClass.BaseClass;
 
 public class Footerlinks extends BaseClass {
 
-	@Given("^Go the Home pagess$")
-	public void Go_the_Home_pagess() throws Throwable {
+	@Given("^user is on team Home Page$")
+	 public void user_is_on_team_Home_Page() throws Throwable {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
 		Thread.sleep(5000);
