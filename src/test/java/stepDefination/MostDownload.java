@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -33,7 +34,7 @@ public class MostDownload extends BaseClass {
 			popular_Ppts.click();
 			checkConsoleError();
 			Thread.sleep(2000);
-		} catch (NoSuchElementException e) {
+		} catch (WebDriverException e) {
 
 		}
 	}
