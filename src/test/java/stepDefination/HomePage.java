@@ -5,8 +5,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.github.bonigarcia.wdm.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class HomePage extends BaseClass {
@@ -34,7 +35,7 @@ public class HomePage extends BaseClass {
 			Thread.sleep(3000);
 			checkConsoleError();
 
-		} catch (NoSuchElementException e) {
+		} catch (WebDriverManagerException e) {
 
 		}
 	}
@@ -48,7 +49,7 @@ public class HomePage extends BaseClass {
 			Thread.sleep(3000);
 			checkConsoleError();
 
-		} catch (NoSuchElementException e) {
+		} catch (WebDriverManagerException e) {
 
 		}
 	}
@@ -62,27 +63,27 @@ public class HomePage extends BaseClass {
 			pricing.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			driver.navigate().back();
+			
 
 			WebElement eBooks = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("eBooks")));
 			eBooks.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			driver.navigate().back();
+			
 
 			WebElement templateFinder = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Template Finder")));
 			templateFinder.click();
 			checkConsoleError();
 			Thread.sleep(3000);
-			driver.navigate().back();
+			
 
 			WebElement presentationServices = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Presentation Services")));
 			presentationServices.click();
 			checkConsoleError();
 			Thread.sleep(3000);
-			driver.navigate().back();
+			
 
 			WebElement researchServices = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Research Services")));

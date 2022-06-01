@@ -8,8 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.github.bonigarcia.wdm.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class FreePPT extends BaseClass {
@@ -21,8 +22,9 @@ public class FreePPT extends BaseClass {
 
 	@Given("^user is already on Home page$")
 	public void user_is_already_on_Home_page() throws Throwable {
+		driver.get(AppURL);
 		log.info("user is already on Home page");
-		BaseClass.ClearBrowserCache();
+		Thread.sleep(5000);
 	}
 
 	@Then("^click on Free ppt and check console error$")
@@ -36,7 +38,7 @@ public class FreePPT extends BaseClass {
 			action.moveToElement(free_ppt).click().perform();
 			Thread.sleep(3000);
 			checkConsoleError();
-		} catch (NoSuchElementException e) {
+		} catch (WebDriverManagerException e) {
 
 		}
 	}

@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import setupClass.BaseClass;
 
 public class SliPage extends BaseClass {
@@ -17,11 +17,12 @@ public class SliPage extends BaseClass {
 	public void user_is_on_the_home_page_now() throws Throwable {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
-		BaseClass.ClearBrowserCache();
+		
 	}
 
 	@Then("^Enter data in search field and cehck the console error$")
 	public void enter_data_in_search_field_and_cehck_the_console_error() throws Throwable {
+		Thread.sleep(3000);
 		search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
 		search_field.clear();
 		search_field.sendKeys("HR");

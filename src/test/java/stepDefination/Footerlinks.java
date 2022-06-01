@@ -1,19 +1,20 @@
 package stepDefination;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import setupClass.BaseClass;
 
 public class Footerlinks extends BaseClass {
 
-	@Given("^Go the Home pages$")
-	public void go_the_Home_pages() throws Throwable {
+	@Given("^user is on team Home Page$")
+	public void user_is_on_team_Home_Page() throws Throwable {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
 		Thread.sleep(5000);
@@ -22,40 +23,50 @@ public class Footerlinks extends BaseClass {
 	@Then("^check the console errors for the footer navigation links$")
 	public void check_the_console_errors_for_the_footer_navigation_links() throws Throwable {
 
-		WebElement aboutUs = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("About Us")));
-		js.executeScript("arguments[0].scrollIntoView();", aboutUs);
-		aboutUs.click();
-		checkConsoleError();
-		Thread.sleep(3000);
-		driver.navigate().back();
+		try {
+			WebElement aboutUs = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@title,'About Us')]")));
+			js.executeScript("arguments[0].scrollIntoView();", aboutUs);
+			aboutUs.click();
+			checkConsoleError();
+			Thread.sleep(3000);
+			driver.navigate().back();
 
-		WebElement contactUs = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Contact Us")));
-		js.executeScript("arguments[0].scrollIntoView();", contactUs);
-		contactUs.click();
-		Thread.sleep(3000);
-		checkConsoleError();
-		driver.navigate().back();
+			WebElement contactUs = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=' Contact Us']")));
+			js.executeScript("arguments[0].scrollIntoView();", contactUs);
+			contactUs.click();
+			Thread.sleep(3000);
+			checkConsoleError();
+			driver.navigate().back();
 
-		WebElement resumeServices = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Resume Services")));
-		js.executeScript("arguments[0].scrollIntoView();", resumeServices);
-		resumeServices.click();
-		Thread.sleep(3000);
-		checkConsoleError();
-		driver.navigate().back();
+			WebElement resumeServices = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Resume Services")));
+			js.executeScript("arguments[0].scrollIntoView();", resumeServices);
+			resumeServices.click();
+			Thread.sleep(3000);
+			checkConsoleError();
+			driver.navigate().back();
 
-		WebElement couponCode = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Coupon Code")));
-		js.executeScript("arguments[0].scrollIntoView();", couponCode);
-		couponCode.click();
-		Thread.sleep(3000);
-		checkConsoleError();
-		driver.navigate().back();
+			WebElement couponCode = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Coupon Code")));
+			js.executeScript("arguments[0].scrollIntoView();", couponCode);
+			couponCode.click();
+			Thread.sleep(3000);
+			checkConsoleError();
+			driver.navigate().back();
 
-		WebElement customDesignServies = wait
-				.until(ExpectedConditions.elementToBeClickable(By.linkText("Custom Design Services")));
-		js.executeScript("arguments[0].scrollIntoView();", customDesignServies);
-		customDesignServies.click();
-		checkConsoleError();
-		driver.navigate().back();
+			WebElement customDesignServies = wait
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Custom Design Services")));
+			js.executeScript("arguments[0].scrollIntoView();", customDesignServies);
+			customDesignServies.click();
+			checkConsoleError();
+			driver.navigate().back();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

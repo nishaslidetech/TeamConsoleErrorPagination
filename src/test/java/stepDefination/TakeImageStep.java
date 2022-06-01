@@ -3,8 +3,8 @@ package stepDefination;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import setupClass.BaseClass;
 
 
@@ -14,7 +14,7 @@ import setupClass.BaseClass;
 		    if (scenario.isFailed()) {	    	
 		      log.info("Scenario failed, now taking screenshot");
 		      final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		      scenario.embed(screenshot, "image/png");
+		      //scenario.embed(screenshot, "image/png");
 		    }
 		}
 	}

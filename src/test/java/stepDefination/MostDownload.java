@@ -7,8 +7,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import setupClass.BaseClass;
 
 public class MostDownload extends BaseClass {
@@ -20,8 +20,9 @@ public class MostDownload extends BaseClass {
 
 	@Given("^user is already on home page$")
 	public void user_is_already_on_home_page() throws Throwable {
+		driver.get(AppURL);
 		log.info("user is already on Home page");
-		BaseClass.ClearBrowserCache();
+		Thread.sleep(4000);
 	}
 
 	@Then("^click on Popular ppts text and check console error$")
