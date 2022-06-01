@@ -21,6 +21,7 @@ public class FreePPT extends BaseClass {
 
 	@Given("^user is already on Home page$")
 	public void user_is_already_on_Home_page() throws Throwable {
+		driver.get(AppURL);
 		log.info("user is already on Home page");
 		BaseClass.ClearBrowserCache();
 	}
@@ -28,6 +29,7 @@ public class FreePPT extends BaseClass {
 	@Then("^click on Free ppt and check console error$")
 	public void click_on_Free_ppt_and_check_console_error() throws Throwable {
 		try {
+			Thread.sleep(5000);
 			free_Stuff = wait.until(ExpectedConditions.elementToBeClickable(
 					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
 			Actions action = new Actions(driver);
@@ -94,7 +96,7 @@ public class FreePPT extends BaseClass {
 	public void click_on_the_Free_Business_ppt_and_check_the_console_error() throws Throwable {
 		// click on free Business PPts without login
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			free_Stuff = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//a[@class='menu-link'][normalize-space()='Free Stuff']")));
 			Actions action = new Actions(driver);
