@@ -14,9 +14,10 @@ public class HomePage extends BaseClass {
 
 	@Given("^Go the Home page$")
 	public void go_the_Home_page() throws Throwable {
+		Thread.sleep(2000);
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
-		BaseClass.ClearBrowserCache();
+		
 	}
 
 	@Then("^check console error for Home page$")
