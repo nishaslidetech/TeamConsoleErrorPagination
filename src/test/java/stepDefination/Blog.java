@@ -1,14 +1,14 @@
 package stepDefination;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import setupClass.BaseClass;
 
 public class Blog extends BaseClass {
@@ -18,7 +18,7 @@ public class Blog extends BaseClass {
 	public void go_to_the_Home_page() throws Throwable {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
-		BaseClass.ClearBrowserCache();
+		
 	}
 
 	@Then("^check console error for Blog page$")
@@ -29,7 +29,7 @@ public class Blog extends BaseClass {
 			blog.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-		} catch (FileNotFoundException e) {
+		} catch (WebDriverException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public class Blog extends BaseClass {
 			Thread.sleep(3000);
 			checkConsoleError();
 			driver.navigate().back();
-		} catch (FileNotFoundException e) {
+		} catch (WebDriverException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

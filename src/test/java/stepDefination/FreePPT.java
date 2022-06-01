@@ -8,9 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.github.bonigarcia.wdm.WebDriverManagerException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class FreePPT extends BaseClass {
@@ -24,12 +24,13 @@ public class FreePPT extends BaseClass {
 	public void user_is_already_on_Home_page() throws Throwable {
 		driver.get(AppURL);
 		log.info("user is already on Home page");
-		Thread.sleep(5000);
+
 	}
 
 	@Then("^click on Free ppt and check console error$")
 	public void click_on_Free_ppt_and_check_console_error() throws Throwable {
 		try {
+			Thread.sleep(5000);
 			free_Stuff = wait.until(ExpectedConditions.elementToBeClickable(
 					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
 			Actions action = new Actions(driver);
@@ -96,7 +97,7 @@ public class FreePPT extends BaseClass {
 	public void click_on_the_Free_Business_ppt_and_check_the_console_error() throws Throwable {
 		// click on free Business PPts without login
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			free_Stuff = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//a[@class='menu-link'][normalize-space()='Free Stuff']")));
 			Actions action = new Actions(driver);

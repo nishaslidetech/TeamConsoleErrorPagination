@@ -5,9 +5,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.github.bonigarcia.wdm.WebDriverManagerException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class HomePage extends BaseClass {
@@ -15,9 +15,10 @@ public class HomePage extends BaseClass {
 
 	@Given("^Go the Home page$")
 	public void go_the_Home_page() throws Throwable {
+		Thread.sleep(2000);
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
-		BaseClass.ClearBrowserCache();
+
 	}
 
 	@Then("^check console error for Home page$")
@@ -63,41 +64,34 @@ public class HomePage extends BaseClass {
 			pricing.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			
 
 			WebElement eBooks = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("eBooks")));
 			eBooks.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			
 
 			WebElement templateFinder = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Template Finder")));
 			templateFinder.click();
 			checkConsoleError();
 			Thread.sleep(3000);
-			
 
 			WebElement presentationServices = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Presentation Services")));
 			presentationServices.click();
 			checkConsoleError();
 			Thread.sleep(3000);
-			
 
 			WebElement researchServices = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Research Services")));
 			researchServices.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			
 
 		} catch (NoSuchElementException e) {
 
 		}
 
 	}
-
-	
 
 }

@@ -1,10 +1,5 @@
 package stepDefination;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -13,9 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.ErrorHandler.UnknownServerException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.github.bonigarcia.wdm.WebDriverManagerException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class eBooks extends BaseClass {

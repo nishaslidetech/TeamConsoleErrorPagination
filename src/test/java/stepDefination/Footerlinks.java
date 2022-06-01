@@ -1,20 +1,23 @@
 package stepDefination;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import setupClass.BaseClass;
 
 public class Footerlinks extends BaseClass {
 
 	@Given("^user is on team Home Page$")
+
 	public void user_is_on_team_Home_Page() throws Throwable {
+
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
 		Thread.sleep(5000);
@@ -30,7 +33,6 @@ public class Footerlinks extends BaseClass {
 			aboutUs.click();
 			checkConsoleError();
 			Thread.sleep(3000);
-			driver.navigate().back();
 
 			WebElement contactUs = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=' Contact Us']")));
@@ -38,32 +40,26 @@ public class Footerlinks extends BaseClass {
 			contactUs.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			driver.navigate().back();
 
-			WebElement resumeServices = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Resume Services")));
+			WebElement resumeServices = wait
+					.until(ExpectedConditions.elementToBeClickable(By.linkText("Resume Services")));
 			js.executeScript("arguments[0].scrollIntoView();", resumeServices);
 			resumeServices.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			driver.navigate().back();
 
 			WebElement couponCode = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Coupon Code")));
 			js.executeScript("arguments[0].scrollIntoView();", couponCode);
 			couponCode.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-			driver.navigate().back();
 
 			WebElement customDesignServies = wait
 					.until(ExpectedConditions.elementToBeClickable(By.linkText("Custom Design Services")));
 			js.executeScript("arguments[0].scrollIntoView();", customDesignServies);
 			customDesignServies.click();
 			checkConsoleError();
-			driver.navigate().back();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (WebDriverException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -72,11 +68,19 @@ public class Footerlinks extends BaseClass {
 
 	@Then("^Check the console error for newly added section$")
 	public void check_the_console_error_for_newly_added_section() throws Throwable {
-		WebElement newlyAdded = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Newly Added")));
-		js.executeScript("arguments[0].scrollIntoView();", newlyAdded);
-		newlyAdded.click();
-		Thread.sleep(3000);
-		checkConsoleError();
+		try {
+			WebElement newlyAdded = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Newly Added")));
+			js.executeScript("arguments[0].scrollIntoView();", newlyAdded);
+			newlyAdded.click();
+			Thread.sleep(3000);
+			checkConsoleError();
+		} catch (WebDriverException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

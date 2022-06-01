@@ -1,13 +1,16 @@
 package stepDefination;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class SliPage extends BaseClass {
@@ -17,35 +20,43 @@ public class SliPage extends BaseClass {
 	public void user_is_on_the_home_page_now() throws Throwable {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
-		
+
 	}
 
 	@Then("^Enter data in search field and cehck the console error$")
 	public void enter_data_in_search_field_and_cehck_the_console_error() throws Throwable {
-		Thread.sleep(3000);
-		search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
-		search_field.clear();
-		search_field.sendKeys("HR");
-		Thread.sleep(3000);
+		try {
+			Thread.sleep(3000);
+			search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
+			search_field.clear();
+			search_field.sendKeys("HR");
+			Thread.sleep(3000);
 
-		checkConsoleError();
+			checkConsoleError();
 
-		// click on "hr report" in left navigation
+			// click on "hr report" in left navigation
 
-		WebElement hr_Report = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@data-suggested-term='hr report']")));
-		hr_Report.click();
-		Thread.sleep(3000);
-		checkConsoleError();
+			WebElement hr_Report = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@data-suggested-term='hr report']")));
+			hr_Report.click();
+			Thread.sleep(3000);
+			checkConsoleError();
 
-		// Clear the search field and enter "Management" on sli listing page
-		search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
-		search_field.clear();
-		search_field.sendKeys("Software");
-		Thread.sleep(3000);
-		checkConsoleError();
-		search_field.clear();
-		Thread.sleep(2000);
+			// Clear the search field and enter "Management" on sli listing page
+			search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
+			search_field.clear();
+			search_field.sendKeys("Software");
+			Thread.sleep(3000);
+			checkConsoleError();
+			search_field.clear();
+			Thread.sleep(2000);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WebDriverManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Then("^Go to the sli listing page and check the console error$")

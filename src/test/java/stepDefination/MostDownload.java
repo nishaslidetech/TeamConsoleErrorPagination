@@ -8,8 +8,9 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
 public class MostDownload extends BaseClass {
@@ -91,84 +92,100 @@ public class MostDownload extends BaseClass {
 
 	@Then("^click on the view page and check the console error$")
 	public void click_on_the_view_page_and_check_the_console_error() throws Throwable {
-		// driver.navigate().back();
-		selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
-		selectDropdown.click();
+		try {
+			// driver.navigate().back();
+			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
+			selectDropdown.click();
 
-		// check console error for the 120 pages
-		viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[2]")));
-		js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
-		viewPerPage.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			// check console error for the 120 pages
+			viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[2]")));
+			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
+			viewPerPage.click();
+			Thread.sleep(2000);
+			// print console error
+			checkConsoleError();
 
-		selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
-		selectDropdown.click();
+			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
+			selectDropdown.click();
 
-		// check console error for the 180 pages
-		viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[3]")));
-		js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
-		viewPerPage.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			// check console error for the 180 pages
+			viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[3]")));
+			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
+			viewPerPage.click();
+			Thread.sleep(2000);
+			// print console error
+			checkConsoleError();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WebDriverManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	@Then("^click on the Filter By Category and check the console error$")
 	public void click_on_the_Filter_By_Category_and_check_the_console_error() throws Throwable {
-		WebElement filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
-		filterByCategory.click();
+		try {
+			WebElement filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory.click();
 
-		// check console error for the 120 pages
-		WebElement diagrams = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[2]")));
-		js.executeScript("arguments[0].scrollIntoView();", diagrams);
-		diagrams.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			// check console error for the 120 pages
+			WebElement diagrams = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[2]")));
+			js.executeScript("arguments[0].scrollIntoView();", diagrams);
+			diagrams.click();
+			Thread.sleep(2000);
+			// print console error
+			checkConsoleError();
 
-		filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
-		filterByCategory.click();
+			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory.click();
 
-		// check console error for the 180 pages
-		WebElement flatDesigns = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[3]")));
-		js.executeScript("arguments[0].scrollIntoView();", flatDesigns);
-		flatDesigns.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			// check console error for the 180 pages
+			WebElement flatDesigns = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[3]")));
+			js.executeScript("arguments[0].scrollIntoView();", flatDesigns);
+			flatDesigns.click();
+			Thread.sleep(2000);
+			// print console error
+			checkConsoleError();
 
-		filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
-		filterByCategory.click();
+			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory.click();
 
-		WebElement businessSlides = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[4]")));
-		js.executeScript("arguments[0].scrollIntoView();", businessSlides);
-		businessSlides.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			WebElement businessSlides = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[4]")));
+			js.executeScript("arguments[0].scrollIntoView();", businessSlides);
+			businessSlides.click();
+			Thread.sleep(2000);
+			// print console error
+			checkConsoleError();
 
-		filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-		js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
-		filterByCategory.click();
+			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory.click();
 
-		WebElement completeDesk = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[5]")));
-		js.executeScript("arguments[0].scrollIntoView();", completeDesk);
-		completeDesk.click();
-		Thread.sleep(2000);
-		// print console error
-		checkConsoleError();
+			WebElement completeDesk = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[5]")));
+			js.executeScript("arguments[0].scrollIntoView();", completeDesk);
+			completeDesk.click();
+			Thread.sleep(2000);
+
+			checkConsoleError();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WebDriverManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }
