@@ -5,9 +5,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import org.openqa.selenium.WebDriverException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
@@ -50,7 +51,9 @@ public class HomePage extends BaseClass {
 			sign_up.click();
 			Thread.sleep(3000);
 			checkConsoleError();
+
 			Thread.sleep(3000);
+
 		} catch (WebDriverManagerException e) {
 
 		}
@@ -60,9 +63,9 @@ public class HomePage extends BaseClass {
 	public void check_the_console_error_for_the_top_navigation_links() throws Throwable {
 
 		try {
-
 			driver.navigate().refresh();
-			Thread.sleep(3000);
+			Thread.sleep(4000);
+
 			WebElement pricing = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Pricing")));
 			pricing.click();
 			Thread.sleep(3000);
