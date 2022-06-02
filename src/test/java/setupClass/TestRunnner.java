@@ -8,9 +8,9 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"."}, tags= {"@CO_Checkout"},
-plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json","usage:target/usage.jsonx","junit:target/cucumber.xml"})
-
+@CucumberOptions(features = { "." }, glue = { "stepDefination" }, // tags= {"@CO_Checkout"},
+		plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber/cucumber.json",
+				"usage:target/usage.jsonx", "junit:target/cucumber.xml" })
 
 public class TestRunnner {
 
@@ -25,4 +25,3 @@ public class TestRunnner {
 	}
 
 }
-

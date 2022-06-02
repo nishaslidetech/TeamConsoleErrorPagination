@@ -2,6 +2,7 @@ package stepDefination;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -49,7 +50,7 @@ public class HomePage extends BaseClass {
 			sign_up.click();
 			Thread.sleep(3000);
 			checkConsoleError();
-
+			Thread.sleep(3000);
 		} catch (WebDriverManagerException e) {
 
 		}
@@ -59,6 +60,8 @@ public class HomePage extends BaseClass {
 	public void check_the_console_error_for_the_top_navigation_links() throws Throwable {
 
 		try {
+
+			driver.navigate().refresh();
 			Thread.sleep(3000);
 			WebElement pricing = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Pricing")));
 			pricing.click();
@@ -88,7 +91,7 @@ public class HomePage extends BaseClass {
 			Thread.sleep(3000);
 			checkConsoleError();
 
-		} catch (NoSuchElementException e) {
+		} catch (WebDriverException e) {
 
 		}
 

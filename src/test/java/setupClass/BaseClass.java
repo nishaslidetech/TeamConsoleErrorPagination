@@ -16,6 +16,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -58,7 +59,7 @@ public class BaseClass {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
-
+			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 			options.addArguments("--incognito"); // DesiredCapabilities object
 			DesiredCapabilities c = DesiredCapabilities.chrome(); // set capability to
 			c.setCapability(ChromeOptions.CAPABILITY, options);
@@ -67,9 +68,9 @@ public class BaseClass {
 
 			driver.manage().window().maximize();
 
-			driver.get(AppURL);
+			//driver.get(AppURL);
 			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 			wait = new WebDriverWait(driver, 30);
 			js = (JavascriptExecutor) driver;
 		}
