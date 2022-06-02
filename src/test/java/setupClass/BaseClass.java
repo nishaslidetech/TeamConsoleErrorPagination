@@ -70,7 +70,7 @@ public class BaseClass {
 
 			//driver.get(AppURL);
 			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
-			driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+			//driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 			wait = new WebDriverWait(driver, 30);
 			js = (JavascriptExecutor) driver;
 		}
