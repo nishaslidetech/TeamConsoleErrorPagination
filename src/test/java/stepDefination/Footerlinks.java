@@ -86,34 +86,45 @@ public class Footerlinks extends BaseClass {
 
 	@Then("^click on the pagination and check the console error for the two pages only\\.$")
 	public void click_on_the_pagination_and_check_the_console_error_for_the_two_pages_only() throws Throwable {
-		List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
+		try {
+			driver.navigate().refresh();
+			Thread.sleep(5000);
+			List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
 
-		System.out.println(sizeofPagination.size() + " = size");
+			System.out.println(sizeofPagination.size() + " = size");
 
-		if (sizeofPagination.size() > 0) {
-			System.out.println("pagination exists");
+			if (sizeofPagination.size() > 0) {
+				System.out.println("pagination exists");
 
-			// click on pagination link
-			do
+				// click on pagination link
+				do
 
-				if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']")).isEmpty()) {
+					if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"))
+							.isEmpty()) {
 
-					WebElement nextButton = driver
-							.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
-					nextButton.click();
+						WebElement nextButton = driver
+								.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
+						nextButton.click();
 
-					Thread.sleep(3000);
-					// print console error
-					checkConsoleError();
+						Thread.sleep(3000);
+						// print console error
+						checkConsoleError();
 
-				} else
+					} else
 
-				{
-					break;
-				}
-			while (true);
-		} else {
-			System.out.println("No pagination exists");
+					{
+						break;
+					}
+				while (true);
+			} else {
+				System.out.println("No pagination exists");
+			}
+		} catch (WebDriverException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
