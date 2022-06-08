@@ -22,8 +22,11 @@ public class FreePPT extends BaseClass {
 
 	@Given("^user is already on Home page$")
 	public void user_is_already_on_Home_page() throws Throwable {
+		driver.navigate().refresh();
+		Thread.sleep(2000);
 		driver.get(AppURL);
 		log.info("user is already on Home page");
+		driver.navigate().refresh();
 
 	}
 
