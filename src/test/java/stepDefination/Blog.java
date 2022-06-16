@@ -24,10 +24,10 @@ public class Blog extends BaseClass {
 	@Then("^check console error for Blog page$")
 	public void check_console_error_for_Blog_page() throws Throwable {
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			WebElement blog = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Blog")));
 			blog.click();
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			checkConsoleError();
 		} catch (WebDriverException e) {
 			// TODO Auto-generated catch block
@@ -40,12 +40,12 @@ public class Blog extends BaseClass {
 	public void click_on_any_of_blog_and_check_the_console_error() throws Throwable {
 
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			List<WebElement> blogDetails = driver.findElements(
 					By.xpath("//div[@class='container blog-container clearfix']//ol//li//div//div//div//a//img"));
 			System.out.println(blogDetails.size() + "  = size");
 			blogDetails.get(1).click();
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			checkConsoleError();
 			driver.navigate().back();
 		} catch (WebDriverException e) {
@@ -57,7 +57,7 @@ public class Blog extends BaseClass {
 
 	@Then("^click on pagination number and check the console error for two page only$")
 	public void click_on_pagination_number_and_check_the_console_error_for_two_page_only() throws Throwable {
-
+                Thread.sleep(5000);
 		List<WebElement> sizeofPagination = driver
 				.findElements(By.xpath("//div[@class = 'toolbar toolbar-products']//li"));
 
