@@ -26,7 +26,7 @@ public class SliPage extends BaseClass {
 	@Then("^Enter data in search field and cehck the console error$")
 	public void enter_data_in_search_field_and_cehck_the_console_error() throws Throwable {
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
 			search_field.clear();
 			search_field.sendKeys("HR");
