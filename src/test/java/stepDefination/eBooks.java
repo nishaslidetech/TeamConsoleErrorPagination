@@ -22,6 +22,7 @@ public class eBooks extends BaseClass {
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
 		BaseClass.ClearBrowserCache();
+		Thread.sleep(5000);
 	}
 
 	@Then("^click on eBooks text and check console error$")
