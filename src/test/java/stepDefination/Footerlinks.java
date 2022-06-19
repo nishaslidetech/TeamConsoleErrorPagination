@@ -30,6 +30,7 @@ public class Footerlinks extends BaseClass {
 			WebElement aboutUs = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@title,'About Us')]")));
 			js.executeScript("arguments[0].scrollIntoView();", aboutUs);
+			Thread.sleep(3000);
 			aboutUs.click();
 			checkConsoleError();
 			Thread.sleep(3000);
