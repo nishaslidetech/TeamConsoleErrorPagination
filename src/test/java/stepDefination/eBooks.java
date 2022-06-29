@@ -8,8 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.ErrorHandler.UnknownServerException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
@@ -35,8 +35,8 @@ public class eBooks extends BaseClass {
 
 			// go to the eBooks details page and check the console error
 
-			WebElement selecteBook = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
+			WebElement selecteBook = wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
 			selecteBook.click();
 			Thread.sleep(3000);
 			checkConsoleError();
@@ -153,8 +153,8 @@ public class eBooks extends BaseClass {
 
 			// go to the eBooks details page and check the console error
 
-			WebElement selecteBook = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
+			WebElement selecteBook = wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
 			selecteBook.click();
 			Thread.sleep(3000);
 			checkConsoleError();

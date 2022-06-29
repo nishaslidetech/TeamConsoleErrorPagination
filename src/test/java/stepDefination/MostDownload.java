@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import setupClass.BaseClass;
 
@@ -99,7 +99,8 @@ public class MostDownload extends BaseClass {
 			selectDropdown.click();
 
 			// check console error for the 120 pages
-			viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[2]")));
+			viewPerPage = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[2]")));
 			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
 			viewPerPage.click();
 			Thread.sleep(2000);
@@ -111,7 +112,8 @@ public class MostDownload extends BaseClass {
 			selectDropdown.click();
 
 			// check console error for the 180 pages
-			viewPerPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[3]")));
+			viewPerPage = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[3]")));
 			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
 			viewPerPage.click();
 			Thread.sleep(2000);
