@@ -81,6 +81,8 @@ public class BaseClass {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
+			driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 			wait = new WebDriverWait(driver, 30);
 			js = (JavascriptExecutor) driver;
 
