@@ -38,7 +38,6 @@ public class BaseClass {
 	public static Properties property = new Properties(System.getProperties());
 	public static String browser;
 	public static Logger log;
-
 	public static WebDriverWait wait;
 	static String errorLog;
 	public static JavascriptExecutor js;
@@ -46,7 +45,7 @@ public class BaseClass {
 	@BeforeClass
 	public static void before_Class() throws Exception {
 		log = Logger.getLogger(BeforeClass.class.getName());
-		property.load(new FileReader("Config//config.properties"));
+		property.load(new FileReader("config//config.properties"));
 		String AppURL = property.getProperty("App_url");
 
 		System.out.println("Bname=====" + AppURL);
