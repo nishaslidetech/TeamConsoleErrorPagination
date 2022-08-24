@@ -16,6 +16,7 @@ public class Blog extends BaseClass {
 
 	@Given("^Go to the Home page$")
 	public void go_to_the_Home_page() throws Throwable {
+		System.out.println("Bname=====" + AppURL);
 		driver.get(AppURL);
 		log.info("It's opening the website URL");
 

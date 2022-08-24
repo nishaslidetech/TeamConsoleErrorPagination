@@ -46,7 +46,7 @@ public class BaseClass {
 	public static void before_Class() throws Exception {
 		log = Logger.getLogger(BeforeClass.class.getName());
 		property.load(new FileReader("config//config.properties"));
-		String AppURL = property.getProperty("App_url");
+		AppURL = property.getProperty("App_url");
 
 		System.out.println("Bname=====" + AppURL);
 
