@@ -38,6 +38,7 @@ public class FreePPT extends BaseClass {
 					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
 			Actions action = new Actions(driver);
 			action.moveToElement(free_Stuff).perform();
+			Thread.sleep(3000);
 			free_ppt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Free Samples']")));
 			action.moveToElement(free_ppt).click().perform();
 			Thread.sleep(3000);
@@ -57,6 +58,8 @@ public class FreePPT extends BaseClass {
 			select_ppt.click();
 			Thread.sleep(3000);
 			checkConsoleError();
+			driver.navigate().back();
+			Thread.sleep(3000);
 		} catch (NoSuchElementException e) {
 
 		}
@@ -126,6 +129,7 @@ public class FreePPT extends BaseClass {
 			select_ppt.click();
 			Thread.sleep(3000);
 			checkConsoleError();
+			driver.navigate().back();
 		} catch (NoSuchElementException e) {
 
 		}

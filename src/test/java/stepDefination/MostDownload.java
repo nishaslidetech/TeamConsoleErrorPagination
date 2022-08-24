@@ -58,6 +58,7 @@ public class MostDownload extends BaseClass {
 
 	@Then("^click on the pagination and check the console errorfor two pages only$")
 	public void click_on_the_pagination_and_check_the_console_errorfor_two_pages_only() throws Throwable {
+
 		List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
 
 		System.out.println(sizeofPagination.size() + " = size");
@@ -65,27 +66,25 @@ public class MostDownload extends BaseClass {
 		if (sizeofPagination.size() > 0) {
 			System.out.println("pagination exists");
 
-			// click on pagination link
-			do
-
+			// click on pagination link do
+			for (int i = 1; i < sizeofPagination.size();) {
 				if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']")).isEmpty()) {
 
 					WebElement nextButton = driver
 							.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
 					nextButton.click();
 
-					Thread.sleep(2000);
-					// print console error
-					checkConsoleError();
-
+					Thread.sleep(2000); // print console error checkConsoleError();
 				} else
 
 				{
 					break;
 				}
 
-			while (true);
-		} else {
+			}
+		} else
+
+		{
 			System.out.println("No pagination exists");
 		}
 	}
@@ -94,28 +93,29 @@ public class MostDownload extends BaseClass {
 	public void click_on_the_view_page_and_check_the_console_error() throws Throwable {
 		try {
 			// driver.navigate().back();
-			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
+			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
 			selectDropdown.click();
 
 			// check console error for the 120 pages
-			viewPerPage = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[2]")));
-			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
-			viewPerPage.click();
+			List<WebElement> viewPerPage120 = driver.findElements(By.xpath("//div[@data-value = '120']"));
+			// js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
+			viewPerPage120.get(0).click();
 			Thread.sleep(2000);
 			// print console error
 			checkConsoleError();
 
-			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk1-combobox")));
+			selectDropdown = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", selectDropdown);
 			selectDropdown.click();
 
 			// check console error for the 180 pages
-			viewPerPage = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk1-listbox']//li[3]")));
-			js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
-			viewPerPage.click();
+			Thread.sleep(2000);
+			List<WebElement> viewPerPage180 = driver.findElements(By.xpath("//div[@data-value = '180']"));
+			// js.executeScript("arguments[0].scrollIntoView();", viewPerPage);
+			viewPerPage180.get(0).click();
 			Thread.sleep(2000);
 			// print console error
 			checkConsoleError();
@@ -132,52 +132,55 @@ public class MostDownload extends BaseClass {
 	@Then("^click on the Filter By Category and check the console error$")
 	public void click_on_the_Filter_By_Category_and_check_the_console_error() throws Throwable {
 		try {
-			WebElement filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			WebElement filterByCategory = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
 			filterByCategory.click();
-
+			Thread.sleep(2000);
 			// check console error for the 120 pages
-			WebElement diagrams = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[2]")));
-			js.executeScript("arguments[0].scrollIntoView();", diagrams);
-			diagrams.click();
+			List<WebElement> diagrams = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[2]"));
+			// js.executeScript("arguments[0].scrollIntoView();", diagrams);
+			diagrams.get(0).click();
 			Thread.sleep(2000);
 			// print console error
 			checkConsoleError();
 
-			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
+			// js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
 			filterByCategory.click();
+			Thread.sleep(2000);
 
 			// check console error for the 180 pages
-			WebElement flatDesigns = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[3]")));
-			js.executeScript("arguments[0].scrollIntoView();", flatDesigns);
-			flatDesigns.click();
+			List<WebElement> flatDesigns = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[3]"));
+			// js.executeScript("arguments[0].scrollIntoView();", flatDesigns);
+			flatDesigns.get(0).click();
 			Thread.sleep(2000);
 			// print console error
 			checkConsoleError();
 
-			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
+			filterByCategory = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
 			filterByCategory.click();
+			Thread.sleep(2000);
 
-			WebElement businessSlides = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[4]")));
-			js.executeScript("arguments[0].scrollIntoView();", businessSlides);
-			businessSlides.click();
+			List<WebElement> businessSlides = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[4]"));
+			// js.executeScript("arguments[0].scrollIntoView();", businessSlides);
+			businessSlides.get(0).click();
 			Thread.sleep(2000);
 			// print console error
 			checkConsoleError();
 
-			filterByCategory = wait.until(ExpectedConditions.elementToBeClickable(By.id("dk0-combobox")));
-			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
+			filterByCategory = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
+			// js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
 			filterByCategory.click();
+			Thread.sleep(2000);
 
-			WebElement completeDesk = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id = 'dk0-listbox']//li[5]")));
-			js.executeScript("arguments[0].scrollIntoView();", completeDesk);
-			completeDesk.click();
+			List<WebElement> completeDesk = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[5]"));
+			// js.executeScript("arguments[0].scrollIntoView();", completeDesk);
+			completeDesk.get(0).click();
 			Thread.sleep(2000);
 
 			checkConsoleError();
