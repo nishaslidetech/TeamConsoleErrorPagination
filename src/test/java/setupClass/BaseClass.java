@@ -23,6 +23,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -160,7 +161,30 @@ public class BaseClass {
 		Thread.sleep(2000);
 
 	}
+	public static void Chat_window_handle() throws InterruptedException {
+		try {
+			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
+			if (iframe.isDisplayed()) {
+				driver.switchTo().frame(iframe);
+				Actions act = new Actions(driver);
+				act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
+				Thread.sleep(1000);
+				WebElement chat1 = driver.findElement(By.cssSelector("#title .icon-minimize"));
+				Thread.sleep(1000);
+				chat1.click();
+				Thread.sleep(1000);
+				driver.switchTo().defaultContent();
+				Thread.sleep(1000);
+				driver.switchTo().parentFrame();
+				Thread.sleep(3000);
+			} else {
 
+				System.out.println("chat window does not open");
+			}
+		} catch (NoSuchElementException NCP) {
+
+		}
+	}
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);

@@ -145,6 +145,9 @@ public class MostDownload extends BaseClass {
 			// print console error
 			checkConsoleError();
 
+			driver.navigate().refresh();
+			Thread.sleep(2000);
+
 			filterByCategory = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			// js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
@@ -159,6 +162,8 @@ public class MostDownload extends BaseClass {
 			// print console error
 			checkConsoleError();
 
+			driver.navigate().refresh();
+			Thread.sleep(2000);
 			filterByCategory = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
