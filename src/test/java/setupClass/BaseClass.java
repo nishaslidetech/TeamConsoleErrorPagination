@@ -161,21 +161,22 @@ public class BaseClass {
 		Thread.sleep(2000);
 
 	}
-	public static void Chat_window_handle() throws InterruptedException {
+
+	public static void chatWindow() throws Throwable {
+
 		try {
-			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
-			if (iframe.isDisplayed()) {
+			WebElement iframe = driver.findElement(By.xpath("//iframe[@id = 'chat-widget' or @name = 'chat-widget']"));
+			Thread.sleep(1000);
+			boolean value = iframe.isDisplayed();
+			System.out.println("value = " + value);
+			if (value == true) {
 				driver.switchTo().frame(iframe);
-				Actions act = new Actions(driver);
-				act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
-				Thread.sleep(1000);
-				WebElement chat1 = driver.findElement(By.cssSelector("#title .icon-minimize"));
+				WebElement chat1 = wait.until(ExpectedConditions.elementToBeClickable(
+						By.xpath("//div[@role = 'main']//button[@aria-label = 'Minimize window']")));
 				Thread.sleep(1000);
 				chat1.click();
 				Thread.sleep(1000);
 				driver.switchTo().defaultContent();
-				Thread.sleep(1000);
-				driver.switchTo().parentFrame();
 				Thread.sleep(3000);
 			} else {
 
@@ -185,6 +186,7 @@ public class BaseClass {
 
 		}
 	}
+
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);
