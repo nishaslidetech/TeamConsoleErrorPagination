@@ -149,10 +149,17 @@ public class eBooks extends BaseClass {
 		try {
 			Thread.sleep(3000);
 
-			Actions action = new Actions(driver);
-			action.moveByOffset(0, 83).click().perform();
-			Thread.sleep(3000);
+			/*
+			 * Actions action = new Actions(driver); action.moveByOffset(0,
+			 * 83).click().perform(); Thread.sleep(3000);
+			 */
 
+			if (!driver.findElements(By.xpath("//div[@class='checkout_custom']//center")).isEmpty()) {
+				WebElement closePopup = wait
+						.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='livechatclosepopup']")));
+				closePopup.click();
+				Thread.sleep(2000);
+			}
 			WebElement eBooks = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("eBooks")));
 			eBooks.click();
 			Thread.sleep(3000);
