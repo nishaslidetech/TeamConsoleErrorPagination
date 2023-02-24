@@ -3,6 +3,7 @@ package stepDefination;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,18 +38,28 @@ public class SliPage extends BaseClass {
 
 			WebElement hr_Report = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@data-suggested-term='hr report']")));
+			Thread.sleep(3000);
 			hr_Report.click();
 			Thread.sleep(3000);
 			checkConsoleError();
 
 			// Clear the search field and enter "Management" on sli listing page
+			Thread.sleep(3000);
+
 			search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
 			Thread.sleep(3000);
-			search_field.clear();
+			search_field.sendKeys(Keys.CONTROL + "a");
+			Thread.sleep(3000);
+			search_field.sendKeys(Keys.DELETE);
+			Thread.sleep(3000);
 			search_field.sendKeys("Software");
+
 			Thread.sleep(3000);
 			checkConsoleError();
-			search_field.clear();
+
+			search_field.sendKeys(Keys.CONTROL + "a");
+			Thread.sleep(3000);
+			search_field.sendKeys(Keys.DELETE);
 			Thread.sleep(2000);
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
@@ -61,7 +72,8 @@ public class SliPage extends BaseClass {
 
 	@Then("^Go to the sli listing page and check the console error$")
 	public void go_to_the_sli_listing_page_and_check_the_console_error() throws Throwable {
-		// div[@class = 'container listing-container sli_generic_container']//ul//li[4]
+		Thread.sleep(2000);
+		driver.navigate().refresh();
 		List<WebElement> selectPpt = driver
 				.findElements(By.xpath("//ul[@class = 'products list items product-items sli_container  ']/li//img"));
 		selectPpt.get(1).click();
