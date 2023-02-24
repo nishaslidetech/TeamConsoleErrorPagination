@@ -134,9 +134,10 @@ public class eBooks extends BaseClass {
 			login_btn.click();
 			Thread.sleep(2000);
 
-			if (!driver.findElements(By.xpath("//div[@class='login-attempt-popup']")).isEmpty()) {
+			if (!driver.findElements(By.xpath("//div[@class = ' login-attempt-popup']")).isEmpty()) {
 				WebElement approve = wait
 						.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='confirm-approve']")));
+				Thread.sleep(2000);
 				approve.click();
 			}
 		} catch (WebDriverManagerException e) {

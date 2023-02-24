@@ -43,6 +43,7 @@ public class SliPage extends BaseClass {
 
 			// Clear the search field and enter "Management" on sli listing page
 			search_field = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
+			Thread.sleep(3000);
 			search_field.clear();
 			search_field.sendKeys("Software");
 			Thread.sleep(3000);

@@ -125,7 +125,6 @@ public class FreePPT extends BaseClass {
 		try {
 			Thread.sleep(3000);
 			select_ppt = driver.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//a//img"));
-			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			select_ppt.get(1).click();
 			Thread.sleep(3000);
 			checkConsoleError();
