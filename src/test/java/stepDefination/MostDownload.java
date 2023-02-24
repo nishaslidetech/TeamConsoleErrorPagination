@@ -138,7 +138,7 @@ public class MostDownload extends BaseClass {
 			WebElement filterByCategory = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
-			chatWindow(); 
+			
 			filterByCategory.click();
 			Thread.sleep(2000);
 			// check console error for the 120 pages
@@ -159,6 +159,8 @@ public class MostDownload extends BaseClass {
 			Thread.sleep(2000);
 
 			// check console error for the 180 pages
+			driver.navigate().refresh();
+			Thread.sleep(2000);
 			List<WebElement> flatDesigns = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[3]"));
 			// js.executeScript("arguments[0].scrollIntoView();", flatDesigns);
 			flatDesigns.get(0).click();
@@ -174,7 +176,10 @@ public class MostDownload extends BaseClass {
 			js.executeScript("arguments[0].scrollIntoView();", filterByCategory);
 			filterByCategory.click();
 			Thread.sleep(2000);
-
+			
+			
+			driver.navigate().refresh();
+			Thread.sleep(2000);
 			List<WebElement> businessSlides = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[4]"));
 			// js.executeScript("arguments[0].scrollIntoView();", businessSlides);
 			businessSlides.get(0).click();
@@ -182,12 +187,16 @@ public class MostDownload extends BaseClass {
 			// print console error
 			checkConsoleError();
 
+			driver.navigate().refresh();
+			Thread.sleep(2000);
 			filterByCategory = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")));
 			chatWindow(); 
 			filterByCategory.click();
 			Thread.sleep(2000);
 
+			driver.navigate().refresh();
+			Thread.sleep(2000);
 			List<WebElement> completeDesk = driver.findElements(By.xpath("//div[@class = 'choices__list']//div[5]"));
 			// js.executeScript("arguments[0].scrollIntoView();", completeDesk);
 			completeDesk.get(0).click();
