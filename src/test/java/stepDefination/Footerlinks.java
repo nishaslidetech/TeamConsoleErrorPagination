@@ -91,7 +91,8 @@ public class Footerlinks extends BaseClass {
 		try {
 			driver.navigate().refresh();
 			Thread.sleep(5000);
-			List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
+			List<WebElement> sizeofPagination = driver
+					.findElements(By.xpath("//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li"));
 
 			System.out.println(sizeofPagination.size() + " = size");
 
@@ -101,11 +102,12 @@ public class Footerlinks extends BaseClass {
 				// click on pagination link
 				do
 
-					if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"))
+					if (!driver.findElements(By.xpath(
+							"//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li//img[@alt = 'Next']"))
 							.isEmpty()) {
 
-						WebElement nextButton = driver
-								.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
+						WebElement nextButton = driver.findElement(By.xpath(
+								"//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li//img[@alt = 'Next']"));
 						nextButton.click();
 
 						Thread.sleep(3000);

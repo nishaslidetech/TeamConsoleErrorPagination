@@ -1,10 +1,13 @@
 package stepDefination;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.ErrorHandler.UnknownServerException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -15,7 +18,7 @@ import setupClass.BaseClass;
 
 public class eBooks extends BaseClass {
 	WebElement dropDown;
-	WebElement selecteBook;
+	List<WebElement> selecteBook;
 
 	@Given("^user is the on home page$")
 	public void user_is_the_on_home_page() throws Throwable {
@@ -35,9 +38,8 @@ public class eBooks extends BaseClass {
 
 			// go to the eBooks details page and check the console error
 
-			WebElement selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
 			Thread.sleep(3000);
 			checkConsoleError();
 			driver.navigate().back();
@@ -64,10 +66,10 @@ public class eBooks extends BaseClass {
 			checkConsoleError();
 
 			// go to the eBooks details page and check the console error
-			selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
 			Thread.sleep(3000);
+
 			checkConsoleError();
 			driver.navigate().back();
 
@@ -82,16 +84,16 @@ public class eBooks extends BaseClass {
 			checkConsoleError();
 
 			// go to the eBooks details page and check the console error
-			selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
 			Thread.sleep(3000);
+
 			checkConsoleError();
 			driver.navigate().back();
 
-			WebElement buyNow = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[5]/ul[1]/li[1]/div[1]/form[1]/div[1]/input[1]")));
-			buyNow.click();
+			List<WebElement> buyNow = driver
+					.findElements(By.xpath("//div[@class = 'book-count']//input[@name = 'Buy']"));
+			buyNow.get(0).click();
 			Thread.sleep(3000);
 			checkConsoleError();
 			driver.navigate().back();
@@ -146,6 +148,11 @@ public class eBooks extends BaseClass {
 	public void click_on_eBooks_on_the_top_navigation_bar() throws Throwable {
 		try {
 			Thread.sleep(3000);
+
+			Actions action = new Actions(driver);
+			action.moveByOffset(0, 83).click().perform();
+			Thread.sleep(3000);
+
 			WebElement eBooks = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("eBooks")));
 			eBooks.click();
 			Thread.sleep(3000);
@@ -153,10 +160,10 @@ public class eBooks extends BaseClass {
 
 			// go to the eBooks details page and check the console error
 
-			WebElement selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
 			Thread.sleep(3000);
+
 			checkConsoleError();
 			driver.navigate().back();
 		} catch (UnknownServerException e) {
@@ -184,9 +191,8 @@ public class eBooks extends BaseClass {
 			checkConsoleError();
 
 			// go to the eBooks details page and check the console error
-			selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
 			Thread.sleep(3000);
 			checkConsoleError();
 			driver.navigate().back();
@@ -202,9 +208,9 @@ public class eBooks extends BaseClass {
 			checkConsoleError();
 
 			// go to the eBooks details page and check the console error
-			selecteBook = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div//ul[1]/li[1]/div[1]/i[1]/a[1]/img[1]")));
-			selecteBook.click();
+			selecteBook = driver.findElements(By.xpath("//div[@class = 'book-collection-inner']//img"));
+			selecteBook.get(1).click();
+			Thread.sleep(3000);
 			Thread.sleep(3000);
 			checkConsoleError();
 			driver.navigate().back();

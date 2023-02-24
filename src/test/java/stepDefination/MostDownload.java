@@ -59,7 +59,8 @@ public class MostDownload extends BaseClass {
 	@Then("^click on the pagination and check the console errorfor two pages only$")
 	public void click_on_the_pagination_and_check_the_console_errorfor_two_pages_only() throws Throwable {
 
-		List<WebElement> sizeofPagination = driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a"));
+		List<WebElement> sizeofPagination = driver
+				.findElements(By.xpath("//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li"));
 
 		System.out.println(sizeofPagination.size() + " = size");
 
@@ -68,10 +69,12 @@ public class MostDownload extends BaseClass {
 
 			// click on pagination link do
 			for (int i = 1; i < sizeofPagination.size();) {
-				if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']")).isEmpty()) {
+				if (!driver.findElements(By.xpath(
+						"//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li//img[@alt = 'Next']"))
+						.isEmpty()) {
 
-					WebElement nextButton = driver
-							.findElement(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']"));
+					WebElement nextButton = driver.findElement(By.xpath(
+							"//div[@class='columns']//div[3]//div[1]//div[1]//div[1]//ul[1]//li//img[@alt = 'Next']"));
 					nextButton.click();
 
 					Thread.sleep(2000); // print console error checkConsoleError();

@@ -61,9 +61,9 @@ public class SliPage extends BaseClass {
 	@Then("^Go to the sli listing page and check the console error$")
 	public void go_to_the_sli_listing_page_and_check_the_console_error() throws Throwable {
 		// div[@class = 'container listing-container sli_generic_container']//ul//li[4]
-		WebElement selectPpt = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//div[3]/div[1]/ul[1]/li[1]/div[1]/div[1]/a[1]/img[1]")));
-		js.executeScript("arguments[0].click();", selectPpt);
+		List<WebElement> selectPpt = driver
+				.findElements(By.xpath("//ul[@class = 'products list items product-items sli_container  ']/li//img"));
+		selectPpt.get(1).click();
 		Thread.sleep(3000);
 		checkConsoleError();
 		driver.navigate().back();
