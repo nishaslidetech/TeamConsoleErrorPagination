@@ -74,6 +74,7 @@ public class SliPage extends BaseClass {
 	public void go_to_the_sli_listing_page_and_check_the_console_error() throws Throwable {
 		Thread.sleep(2000);
 		driver.navigate().refresh();
+		Thread.sleep(3000);
 		List<WebElement> selectPpt = driver
 				.findElements(By.xpath("//ul[@class = 'products list items product-items sli_container  ']/li//img"));
 		selectPpt.get(1).click();
@@ -81,12 +82,14 @@ public class SliPage extends BaseClass {
 		checkConsoleError();
 		driver.navigate().back();
 		Thread.sleep(3000);
+		driver.navigate().refresh();
+		Thread.sleep(3000);
 	}
 
 	@Then("^click on pagination number and check the console error for two page only for sli$")
 	public void click_on_pagination_number_and_check_the_console_error_for_two_page_only_for_sli() throws Throwable {
 		List<WebElement> sizeofPagination = driver
-				.findElements(By.xpath("//div[3]//div[1]//div[1]//div[3]//ul[1]//li"));
+				.findElements(By.xpath("//div[@class = 'pages sli_generic_container']//li"));
 
 		System.out.println(sizeofPagination.size() + " = size");
 
@@ -96,11 +99,13 @@ public class SliPage extends BaseClass {
 			// click on pagination link
 			for (int i = 1; i < sizeofPagination.size();) {
 
-				if (!driver.findElements(By.xpath("//div[3]//div[1]//div[1]//div//a//img[@alt = 'Next']")).isEmpty()) {
+				if (!driver
+						.findElements(By.xpath("//div[@class = 'pages sli_generic_container']//li//img[@alt = 'Next']"))
+						.isEmpty()) {
 
-					WebElement nextButton = driver
-							.findElement(By.xpath("//div[3]//div[1]//div[1]//div[3]//ul[1]//li//img[@alt = 'Next']"));
-					nextButton.click();
+					List<WebElement> nextButton = driver.findElements(
+							By.xpath("//div[@class = 'pages sli_generic_container']//li//img[@alt = 'Next']"));
+					nextButton.get(0).click();
 
 					Thread.sleep(3000);
 					checkConsoleError();
